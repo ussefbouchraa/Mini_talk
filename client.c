@@ -6,7 +6,7 @@
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 06:22:36 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/04/13 05:03:31 by ybouchra         ###   ########.fr       */
+/*   Updated: 2023/04/14 03:48:37 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 void send_bit(int pid , int bit)
 {
-    printf("%d", bit);
     if (kill(pid, 0) != 0)
         {
             perror("pid Error");
