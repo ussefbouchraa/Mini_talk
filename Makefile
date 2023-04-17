@@ -4,8 +4,9 @@ CLIENT = client
 CC = cc -Wall -Wextra -Werror
 RM = rm -rf
 AR = ar rcs 
-FILES =  server.c
-C_FILES = client.c
+
+FILES =  src/server.c  utils/ft_atoi.c utils/ft_putnbr.c
+C_FILES = src/client.c utils/ft_atoi.c utils/ft_putnbr.c
 
 OBJS = $(FILES:.c=.o)
 C_OBJ = $(C_FILES:.c=.o)

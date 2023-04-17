@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouchra <ybouchra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 06:23:44 by ybouchra          #+#    #+#             */
-/*   Updated: 2023/04/14 03:48:29 by ybouchra         ###   ########.fr       */
+/*   Created: 2023/04/15 14:40:33 by ybouchra          #+#    #+#             */
+/*   Updated: 2023/04/17 05:54:02 by ybouchra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../minitalk.h"
 
-void sig_handler(int sig)
+void	ft_putnbr(int nbr)
 {
-	static int bit;
-	static int i;
+	int long	nb;
 
-	if (sig == SIGUSR2)
-		i = (1 << bit) | i;
-	bit++;
-	if (bit == 8)
+	nb = nbr;
+	if (nb < 0)
 	{
-		write(1, &i, 1);
-		bit = 0;
-		i = 0;
+		write(1, "-", 1);
+		nb *= -1;
 	}
-}
-
-int main()
-{
-	printf("%d\n", getpid());
-
-	while (1)
+	if (nb > 9)
 	{
-		signal(SIGUSR1, sig_handler);
-		signal(SIGUSR2, sig_handler);
-		pause();
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+	{
+		nb += 48;
+		write(1, &nb, 1);
 	}
 }
